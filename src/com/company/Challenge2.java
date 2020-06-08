@@ -4,7 +4,7 @@ package com.company;
 //Emma Rikalo
 
 public class Challenge2 {
-//Declare the global variable size
+//Declare the global variable size so that the image will be easily resizable
 public static final int size=4;
 
 //call all parts of the image
