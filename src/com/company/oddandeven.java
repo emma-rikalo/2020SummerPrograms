@@ -15,7 +15,7 @@ public class oddandeven {
 
         //create the variable odd to print all odd numbers 0-100
         for (int odd=1; odd<=100; odd+=2) {
-            System.out.print(odd + " ");
+            System.out.print(" " +odd);
         }
 
     }
