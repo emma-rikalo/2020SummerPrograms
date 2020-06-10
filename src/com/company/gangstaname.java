@@ -1,7 +1,7 @@
 package com.company;
 //This program will output a person's gangsta name
 //06/10/20
-//Emma
+//Emma Rikalo
 
 import java.util.*;
 public class gangstaname {
