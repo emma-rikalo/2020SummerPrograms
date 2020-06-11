@@ -4,7 +4,7 @@ package com.company;
 //06/11/20
 //Emma Rikalo
 
-import java.util.Scanner;
+import java.util.*;
 
 public class gangstaname_V2 {
 
