@@ -14,7 +14,7 @@ public class gangstaname {
        //create a scanner to receive input
        Scanner input= new Scanner (System.in);
 
-       System.out.print("Type your name, playa:");
+       System.out.print("Type your name: ");
 
        //create 2 strings to represent the user's first and last names
        String fName= input.next();
