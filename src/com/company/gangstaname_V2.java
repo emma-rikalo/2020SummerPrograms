@@ -14,8 +14,6 @@ public class gangstaname_V2 {
 
     //create a method
     public static void GangstaName(){
-        //create a string to represent the user's name
-        String name;
 
         //create a scanner to receive input
         Scanner input= new Scanner (System.in);
