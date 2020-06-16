@@ -1,6 +1,8 @@
 package com.company;
 // Emma Rikalo
 // 06/16/20
+// This program will take user input and add together 2 integers, then 2 doubles,
+// then concat the original string with a user given ending
 
 
 //                                   PSEUDOCODE
