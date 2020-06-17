@@ -53,9 +53,6 @@ public class datatype {
         System.out.println(i + number);
         System.out.printf("%.1f \n", (d + decimal));
         System.out.println(s.concat(words));
-
-
     }
-
 }
 
