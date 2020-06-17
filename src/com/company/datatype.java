@@ -49,6 +49,9 @@ public class datatype {
         System.out.println("Finish the phrase: Greenhill... ");
         words = (input.next() + input.nextLine());
 
+        //a line break to separate the input section and output section when the program runs
+        System.out.println();
+
         //Print the final outcomes of all the math/ concat
         System.out.println(i + number);
         System.out.printf("%.1f \n", (d + decimal));
