@@ -46,7 +46,7 @@ public class datatype {
         decimal = input.nextDouble();
 
         //Print a prompt; set words equal to the user given phrase
-        System.out.println("Type a string: ");
+        System.out.println("Finish the phrase: Greenhill... ");
         words = (input.next() + input.nextLine());
 
         //Print the final outcomes of all the math/ concat
