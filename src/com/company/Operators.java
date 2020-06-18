@@ -44,13 +44,13 @@ public class Operators {
     //Create the static void solve, and import the variables mealCost, tipPercent, and taxPercent
      static void solve(double mealCost, int tipPercent, int taxPercent){
         //solve for the tip, tax, and total according to the information previously given
-        double tip= mealCost*(tipPercent/100);
-        double tax= mealCost*(taxPercent/100);
-        double totalCost= mealCost + tip + tax;
+        double tip= mealCost*(tipPercent/100.0);
+        double tax= mealCost*(taxPercent/100.0);
+        double totalCost= (mealCost + tip + tax);
         //line break for formatting
         System.out.println();
-        //typecast totalCost from double to int, and pring the total
-        System.out.println("Your total is: $" + (int) totalCost);
+        //typecast totalCost from double to int, and print the total
+        System.out.println((int) totalCost);
     }
 
 }
