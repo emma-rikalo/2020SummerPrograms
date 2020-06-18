@@ -15,7 +15,6 @@ package com.company;
 // Print “Your total is: $” + the rounded version of totalCost
 
 import java.util.*;
-
 public class Operators {
 
     public static void main(String[] args) {
@@ -40,9 +39,7 @@ public class Operators {
 
         //call method solve which will output the total
         solve(mealCost, tipPercent, taxPercent);
-
     }
-
 
     //Create the static void solve, and import the variables mealCost, tipPercent, and taxPercent
      static void solve(double mealCost, int tipPercent, int taxPercent){
@@ -54,7 +51,6 @@ public class Operators {
         System.out.println();
         //typecast totalCost from double to int, and pring the total
         System.out.println("Your total is: $" + (int) totalCost);
-
     }
 
 }
