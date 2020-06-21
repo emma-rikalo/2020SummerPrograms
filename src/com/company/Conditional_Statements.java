@@ -32,6 +32,9 @@ public static String answer;
             //create int n to have a random value 1-137 each time the loop runs
             int n= rand.nextInt(137)+1;
 
+            //print the number
+            System.out.println(n);
+
             //create an if loop to print "Weird" when n is either odd, or in the inclusive range 6-20
             if((n%2!=0) || (n%2==0 && ((6<=n && n<=20)))){
                 System.out.println("Weird");
