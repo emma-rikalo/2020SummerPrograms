@@ -1,17 +1,17 @@
 package com.company;
-//Emma Rikalo
-//06/22/20
+/*  Emma Rikalo
+06/22/20
 
-//Pseudocode:
-//Create a scanner
-//Declare an Int T to be equal to the input number of test cases (words)
-//1<=T<=10
-//Create an array, and set it equal to the user input; the array will contain all of the words input
-//   -make it receive input T times
-//Break each word in it according to odd/even indexed chars
-//   -do this with the same process as the previous program
-//create a new array containing the same set of words, arranged into their final form
-//Print the array
+Pseudocode:
+Create a scanner
+Declare an Int T to be equal to the input number of test cases (words)
+1<=T<=10
+Create an array, and set it equal to the user input; the array will contain all of the words input
+   -make it receive input T times
+Break each word in it according to odd/even indexed chars
+   -do this with the same process as the previous program
+create a new array containing the same set of words, arranged into their final form
+Print the array  */
 
 
 //import all needed classes
@@ -89,7 +89,6 @@ public class ArrayStringChallenge {
 
     //create a method to rearrange the array's contents
     public static String outputWord(String word){
-
         //split into even/odd
         String even= "";
         String odd="";
