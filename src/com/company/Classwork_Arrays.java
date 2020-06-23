@@ -1,7 +1,7 @@
 package com.company;
 import java.util.*;
 
-public class arrays {
+public class Classwork_Arrays {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
