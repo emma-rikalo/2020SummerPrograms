@@ -7,6 +7,19 @@ create random obj
 declare int var size= random # 5-10
 declare array
 create for loop w/size to create each element
+set array equal to size # of random ints 0-100
+declare 2 int for the indexes
+make sure indexes are never equal
+do{
+indx1=rand.nextInt(array.length);
+indx2=rand.nextInt(array.length);
+}while (indx1==indx2)
+call the swap method (array, indx1, indx2)
+
+swap method-
+public static int[] swap (int[], int i, int j)
+swap the values of the two numbers corresponding to the indexes chosen
+return array
  */
 
 
