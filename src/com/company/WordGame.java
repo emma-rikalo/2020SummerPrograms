@@ -41,11 +41,12 @@ import java.util.*;
 import java.io.*;
 
 public class WordGame {
-    //create global variables for the scores and the file's contents
+    //create global variables for the scores and the file's contents, as well as total # of times user has played
     public static String allFile = " ";
     public static int SCORE1;
     public static int SCORE2;
     public static int SCORE3;
+    public static int total=0;
 
     public static void main(String[] args) throws FileNotFoundException{
         //create a variable to help with the replay process later on
@@ -86,7 +87,7 @@ public class WordGame {
 
         } while (replay.contains("y"));
         //if not, end the game and print the overall score
-        System.out.println("\nYour Final Score is: "+(SCORE1+SCORE2+SCORE3)+"\n Thank You For Playing!");
+        System.out.println("\nYou played "+total+" time(s), and your final score is: "+(SCORE1+SCORE2+SCORE3)+"\nThank You For Playing!");
 
     }
 
@@ -104,15 +105,17 @@ public class WordGame {
             int answer = in.nextInt();
             String Answer = Integer.toString(answer);
 
-            //if the answer is correct & hasn't been used before, add to the score
+            //if the answer is correct & hasn't been used before, add to the score, and total times they've played
             if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
+                total++;
                 //tell the user their updated score & ask if they want to guess again
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
 
             } else {
-                //if incorrect, tell the user their score & ask if they want to guess again
+                //if incorrect, tell the user their score & ask if they want to guess again, and add to their total games
+                total++;
                 System.out.println("You Guessed Incorrectly, your Score is still: "+score+ "\nGuess again? 'yes'/'no'");
             }
             //scanner/string to take the user's yes/no answer
@@ -141,15 +144,14 @@ public class WordGame {
             if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
+                total++;
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
-                Scanner yN = new Scanner(System.in);
-                yesNo = yN.next();
             } else {
                 System.out.println("You Guessed Incorrectly, your Score is still: "+score+ "\nGuess again? 'yes'/'no'");
-                Scanner yN = new Scanner(System.in);
-                yesNo = yN.next();
+                total++;
             }
-
+            Scanner yN = new Scanner(System.in);
+            yesNo = yN.next();
         } while((yesNo.contains("y"))||(yesNo.contains("Y")));
         return score;
     }
@@ -168,14 +170,14 @@ public class WordGame {
             if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
+                total++;
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
-                Scanner yN = new Scanner(System.in);
-                yesNo = yN.next();
             } else {
                 System.out.println("You Guessed Incorrectly, your Score is still: "+score+ "\nGuess again? 'yes'/'no'");
-                Scanner yN = new Scanner(System.in);
-                yesNo = yN.next();
+               total++;
             }
+            Scanner yN = new Scanner(System.in);
+            yesNo = yN.next();
         } while((yesNo.contains("y"))||(yesNo.contains("Y")));
         return score;
     }
