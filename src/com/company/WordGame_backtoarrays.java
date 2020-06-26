@@ -37,35 +37,45 @@ Use scanner to ask user if they would like to play again
  */
 
 //import needed classes
-import java.util.*;
-import java.io.*;
 
-public class WordGame {
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class WordGame_backtoarrays {
     //create global variables for the scores and the file's contents
-    public static String allFile = " ";
+    public static String allWORD = " ";
+    public static String allDOUBLE=" ";
+    public static String allINT=" ";
+
     public static int SCORE1;
     public static int SCORE2;
     public static int SCORE3;
+
 
     public static void main(String[] args) throws FileNotFoundException{
         //create a variable to help with the replay process later on
         String replay;
 
         //create a welcome screen
-        System.out.println("                 ************************");
-        System.out.println("                 * WELCOME TO OUR GAME! *");
-        System.out.println("                 ************************\n");
+        System.out.println("                ************************");
+        System.out.println("                * WELCOME TO OUR GAME! *");
+        System.out.println("                ************************\n");
 
         //create a do while loop to run the game while the user continues to want to play
         do {
+            //bring in the file/ read it with a scanner
+            File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
+            Scanner read = new Scanner(file);
+
+            //this method reads/processes the file
+            initialize(read);
 
             //create a scanner, prompt, and string to gather user input
             Scanner input = new Scanner(System.in);
             System.out.println("Would you like to play with 'Integers', 'Doubles', or 'Words'?");
             String Mode = input.next();
-
-            //this method reads/processes the file
-            initialize();
 
             //if loops to jump to the method that deals with the mode the user chooses & get their score
             if ((Mode.contains(("Int")) || (Mode.contains("int")))){
@@ -86,7 +96,7 @@ public class WordGame {
 
         } while (replay.contains("y"));
         //if not, end the game and print the overall score
-        System.out.println("\nYour Final Score is: "+(SCORE1+SCORE2+SCORE3)+"\n Thank You For Playing!");
+        System.out.println("\nYour Final Score is: "+(SCORE1+SCORE2+SCORE3)+"!");
 
     }
 
@@ -105,7 +115,7 @@ public class WordGame {
             String Answer = Integer.toString(answer);
 
             //if the answer is correct & hasn't been used before, add to the score
-            if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allINT.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
                 //tell the user their updated score & ask if they want to guess again
@@ -138,7 +148,7 @@ public class WordGame {
             double answer = in.nextDouble();
             String Answer = Double.toString(answer);
 
-            if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allDOUBLE.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
@@ -165,7 +175,7 @@ public class WordGame {
             System.out.println("Guess a word that has to do with travel/vacation! Capitalize the first letter.");
             String Answer = in.nextLine();
 
-            if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allWORD.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
@@ -181,31 +191,45 @@ public class WordGame {
     }
 
     //this method reads through the file, and processes the tokens in it
-    public static void initialize() throws FileNotFoundException {
-        //bring in the file/ read it with a scanner
-        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
-        Scanner read = new Scanner(file);
-
-        //create an int and string to help process the file
+    public static void initialize(Scanner read) throws FileNotFoundException {
         int i=0;
         String trash = " ";
 
-        //add everything to an array & then convert into a string
-        String [] File = new String[401];
-
+        //add everything into an array & then convert into a string
+        String [] allWord = new String[401];
         i=0;
-        //make sure to read the entire file w/o going over
         while (read.hasNextLine()) {
             if (read.hasNext()) {
-                //add to what we'll search through in the methods...
                 i++;
-                File[i] = read.next();
+                allWord[i] = read.next();
             } else {
-                //...or discard
                 trash = read.next();
             }
-            //convert to a string to make it easier to work with later on
-            allFile = Arrays.toString(File);
+            allWORD = Arrays.toString(allWord);
+        }
+
+        String [] allInt = new String[401];
+        i=0;
+        while (read.hasNextLine()) {
+            if (read.hasNextInt()) {
+                i++;
+                allInt[i] = String.valueOf(read.nextInt());
+            } else {
+                trash = read.next();
+            }
+            allINT = Arrays.toString(allWord);
+        }
+
+        String [] allDouble = new String[401];
+        i=0;
+        while (read.hasNextLine()) {
+            if (read.hasNextDouble()) {
+                i++;
+                allDouble[i] = String.valueOf(read.nextDouble());
+            } else {
+                trash = read.next();
+            }
+            allDOUBLE = Arrays.toString(allWord);
         }
     }
 }
