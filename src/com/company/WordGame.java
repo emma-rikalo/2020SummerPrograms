@@ -87,7 +87,10 @@ public class WordGame {
 
         } while (replay.contains("y"));
         //if not, end the game and print the overall score
-        System.out.println("\nYou played "+total+" time(s), and your final score is: "+(SCORE1+SCORE2+SCORE3)+"\nThank You For Playing!");
+        System.out.println("\n  **********************************************************");
+        System.out.println("  *    You played "+total+" time(s), and your final score is: "+(SCORE1+SCORE2+SCORE3)+"    *");
+        System.out.println("  *                 Thank You For Playing!                 *");
+        System.out.println("  **********************************************************");
 
     }
 
