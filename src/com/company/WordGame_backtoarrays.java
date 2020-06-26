@@ -2,6 +2,7 @@ package com.company;
 /*
 Emma Rikalo & Sydney Pitts
 06/25/20
+//this version went back to our original plan of using 3 arrays
 
 Pseudocode:
 Import Java.util.*
