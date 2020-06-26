@@ -1,41 +1,49 @@
 package com.company;
 
-//CURRENT ISSUES: only recognizes the last answer as existing, can't differentiate between int/dou
-
 import java.util.*;
 import java.io.*;
 
+//make one array,
+
 public class WordGame {
-    public static String allINT = " ";
-    public static String allDOUBLE = " ";
+//    public static String allINT = " ";
+//    public static String allDOUBLE = " ";
     public static String allWORD = " ";
+    public static int SCORE1;
+    public static int SCORE2;
+    public static int SCORE3;
 
 
     public static void main(String[] args) throws FileNotFoundException{
         String replay ="";
-        System.out.println("WELCOME!");
+        System.out.println("* WELCOME! *");
 
         do {
+
             Scanner input = new Scanner(System.in);
             System.out.println("Would you like to play with 'Integers', 'Doubles', or 'Words'?");
             String Mode = input.next();
 
-            initialize();
+//            initializeint();
+//            initializedou();
+            initializestr();
+
 
             if ((Mode.contains(("Int")) || (Mode.contains("int")))){
-                int SCORE = intmode();
-                System.out.println("Your Final Score is: " + SCORE);
+                SCORE1 = intmode();
+                System.out.println("Your Score is: " + SCORE1);
             } if ((Mode.contains(("Dou")) || (Mode.contains("dou")))){
-                int SCORE = doublemode();
-                System.out.println("Your Final Score is: " + SCORE);
+                SCORE2 = doublemode();
+                System.out.println("Your Score is: " + SCORE2);
             } if ((Mode.contains(("Wo")) || (Mode.contains("wo")))){
-                int SCORE = stringmode();
-                System.out.println("Your Final Score is: " + SCORE);
+                SCORE3 = stringmode();
+                System.out.println("Your Score is: " + SCORE3);
             }
             Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to play again in a different mode? 'yes'/'no'");
             replay = again.nextLine();
         } while (replay.contains("y"));
+        System.out.println("Your Final Score is: "+(SCORE1+SCORE2+SCORE3));
 
     }
 
@@ -43,7 +51,6 @@ public class WordGame {
         String yesNo;
         int score = 0;
         String alreadyAnswered = "";
-        System.out.println(allINT);
 
        do {
             Scanner in = new Scanner(System.in);
@@ -51,7 +58,7 @@ public class WordGame {
             int answer = in.nextInt();
             String Answer = Integer.toString(answer);
 
-            if (allINT.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allWORD.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nPlay again? 'yes'/'no'");
@@ -71,7 +78,6 @@ public class WordGame {
         String alreadyAnswered = "";
         int score = 0;
         String yesNo;
-        System.out.println(allDOUBLE);
 
         do {
 
@@ -80,7 +86,7 @@ public class WordGame {
             double answer = in.nextDouble();
             String Answer = Double.toString(answer);
 
-            if (allDOUBLE.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allWORD.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
                 System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nPlay again? 'yes'/'no'");
@@ -100,8 +106,6 @@ public class WordGame {
         int score = 0;
         String yesNo = " ";
         String alreadyAnswered = " ";
-        System.out.println(allWORD);
-
 
         do {
             Scanner in = new Scanner(System.in);
@@ -123,48 +127,62 @@ public class WordGame {
         return score;
     }
 
-    public static void initialize() throws FileNotFoundException {
+//    public static void initializeint() throws FileNotFoundException {
+//
+//        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
+//        Scanner read = new Scanner(file);
+//        int i=0;
+//        String trash = " ";
+//
+//        int [] allInt = new int[134];
+//            i=0;
+//        while (read.hasNextLine()) {
+//            if (read.hasNextInt()) {
+//                i++;
+//                allInt[i] = read.nextInt();
+//            } else {
+//                trash = read.next();
+//            }
+//            allINT = Arrays.toString(allInt);
+//        }
+//
+//    }
+//    public static void initializedou() throws FileNotFoundException {
+//        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
+//        Scanner read = new Scanner(file);
+//        int i=0;
+//        String trash = " ";
+//
+//        double[] allDouble = new double[134];
+//        while (read.hasNextLine()) {
+//            if (read.hasNextDouble()) {
+//                i++;
+//                allDouble[i] = read.nextDouble();
+//            } else {
+//                trash = read.next();
+//            }
+//            allDOUBLE = Arrays.toString(allDouble);
+//        }
+//    }
 
+    public static void initializestr() throws FileNotFoundException {
         File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
         Scanner read = new Scanner(file);
-
+        int i=0;
         String trash = " ";
 
-        double[] allDouble = new double[20];
-        for (int i = 0; i < allDouble.length; i++) {
-            while (read.hasNextLine()) {
-                if (read.hasNextDouble()) {
-                    allDouble[i] = read.nextDouble();
-                } else {
-                    trash = read.next();
-                }
-                allDOUBLE = Arrays.toString(allDouble);
+        String [] allWord = new String[134];
+        i=0;
+        while (read.hasNextLine()) {
+            if (read.hasNext()) {
+                i++;
+                allWord[i] = read.next();
+            } else {
+                trash = read.next();
             }
+            allWORD = Arrays.toString(allWord);
         }
 
-        int[] allInt = new int[29];
-        for (int i = 0; i < allInt.length; i++) {
-            while (read.hasNextLine()) {
-                if (read.hasNextInt()) {
-                    allInt[i] = read.nextInt();
-                } else {
-                    trash = read.next();
-                }
-                allINT = Arrays.toString(allInt);
-            }
-        }
-
-        String[] allWord = new String[25];
-        for (int i = 0; i < allWord.length; i++) {
-            while (read.hasNextLine()) {
-                if (read.hasNext()) {
-                    allWord[i] = read.next();
-                } else {
-                    trash = read.next();
-                }
-                allWORD = Arrays.toString(allWord);
-            }
-        }
     }
 }
 
