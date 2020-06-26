@@ -66,12 +66,11 @@ public class WordGame_backtoarrays {
 
         //create a do while loop to run the game while the user continues to want to play
         do {
-            //bring in the file/ read it with a scanner
-            File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
-            Scanner read = new Scanner(file);
 
-            //this method reads/processes the file
-            initialize(read);
+//            //this method reads/processes the file
+//            initializeint();
+//            initializedou();
+//            initializestr();
 
             //create a scanner, prompt, and string to gather user input
             Scanner input = new Scanner(System.in);
@@ -97,12 +96,14 @@ public class WordGame_backtoarrays {
 
         } while (replay.contains("y"));
         //if not, end the game and print the overall score
-        System.out.println("\nYour Final Score is: "+(SCORE1+SCORE2+SCORE3)+"!");
+        System.out.println("\nYou played "+total+" time(s), and your final score is: "+(SCORE1+SCORE2+SCORE3)+"\nThank You For Playing!");
 
     }
 
     //create a method for int mode
-    public static int intmode() {
+    public static int intmode() throws FileNotFoundException {
+        initializeint();
+
         //declare strings/int that'll be needed later
         String yesNo;
         int score = 0;
@@ -139,7 +140,9 @@ public class WordGame_backtoarrays {
     }
 
     //create a method for doubles, along the same lines as the int mode, just tailored towards a different var
-    public static int doublemode() {
+    public static int doublemode() throws FileNotFoundException {
+        initializedou();
+
         String alreadyAnswered = "";
         int score = 0;
         String yesNo;
@@ -167,7 +170,9 @@ public class WordGame_backtoarrays {
     }
 
     //create a method for words, along the same lines as the int mode, just tailored towards a different var
-    public static int stringmode() {
+    public static int stringmode() throws FileNotFoundException {
+        initializestr();
+
         int score = 0;
         String yesNo = " ";
         String alreadyAnswered = " ";
@@ -193,7 +198,11 @@ public class WordGame_backtoarrays {
     }
 
     //this method reads through the file, and processes the tokens in it
-    public static void initialize(Scanner read) throws FileNotFoundException {
+    public static void initializestr() throws FileNotFoundException {
+        //bring in the file/ read it with a scanner
+        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
+        Scanner read = new Scanner(file);
+
         int i=0;
         String trash = " ";
 
@@ -209,18 +218,15 @@ public class WordGame_backtoarrays {
             }
             allWORD = Arrays.toString(allWord);
         }
+    }
 
-        String [] allInt = new String[401];
-        i=0;
-        while (read.hasNextLine()) {
-            if (read.hasNextInt()) {
-                i++;
-                allInt[i] = String.valueOf(read.nextInt());
-            } else {
-                trash = read.next();
-            }
-            allINT = Arrays.toString(allWord);
-        }
+    public static void initializedou()throws FileNotFoundException{
+        //bring in the file/ read it with a scanner
+        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
+        Scanner read = new Scanner(file);
+
+        int i=0;
+        String trash = " ";
 
         String [] allDouble = new String[401];
         i=0;
@@ -231,8 +237,30 @@ public class WordGame_backtoarrays {
             } else {
                 trash = read.next();
             }
-            allDOUBLE = Arrays.toString(allWord);
+            allDOUBLE = Arrays.toString(allDouble);
         }
     }
+
+    public static void initializeint()throws FileNotFoundException{
+        //bring in the file/ read it with a scanner
+        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
+        Scanner read = new Scanner(file);
+
+        int i=0;
+        String trash = " ";
+
+        String [] allInt = new String[401];
+        i=0;
+        while (read.hasNextLine()) {
+            if (read.hasNextInt()) {
+                i++;
+                allInt[i] = String.valueOf(read.nextInt());
+            } else {
+                trash = read.next();
+            }
+            allINT = Arrays.toString(allInt);
+        }
+    }
+
 }
 
