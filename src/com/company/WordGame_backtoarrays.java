@@ -67,12 +67,6 @@ public class WordGame_backtoarrays {
 
         //create a do while loop to run the game while the user continues to want to play
         do {
-
-//            //this method reads/processes the file
-//            initializeint();
-//            initializedou();
-//            initializestr();
-
             //create a scanner, prompt, and string to gather user input
             Scanner input = new Scanner(System.in);
             System.out.println("Would you like to play with 'Integers', 'Doubles', or 'Words'?");
@@ -103,6 +97,7 @@ public class WordGame_backtoarrays {
 
     //create a method for int mode
     public static int intmode() throws FileNotFoundException {
+        //this method reads through the file for all int
         initializeint();
 
         //declare strings/int that'll be needed later
@@ -142,6 +137,7 @@ public class WordGame_backtoarrays {
 
     //create a method for doubles, along the same lines as the int mode, just tailored towards a different var
     public static int doublemode() throws FileNotFoundException {
+        //this method reads through the file for all doubles
         initializedou();
 
         String alreadyAnswered = "";
@@ -172,6 +168,7 @@ public class WordGame_backtoarrays {
 
     //create a method for words, along the same lines as the int mode, just tailored towards a different var
     public static int stringmode() throws FileNotFoundException {
+        //this method reads through the file for all words
         initializestr();
 
         int score = 0;
