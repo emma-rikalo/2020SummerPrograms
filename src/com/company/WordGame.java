@@ -1,34 +1,74 @@
 package com.company;
+/*
+Emma Rikalo & Sydney Pitts
+06/25/20
 
+Pseudocode:
+Import Java.util.*
+Import Java.io.*
+Import Java.nio*
+Create an overarching do while loop so that the game is replayable
+Create println(“*********”)
+Create println(“*WELCOME*”)
+Create println(“*********”)
+Create a scanner to receive user input
+Ask whether the user wants to input, int, double, or strings
+Create a new file and set it equal to the file that contains the answers
+Create a new scanner to read through that file
+Consume all the tokens, and sort them into 3 strings depending on var type
+Call the corresponding method that will search for the user’s input in the string that contains the var they’re playing, and give the user points
+Create method int
+do
+Create new scanner
+Call string allIntegers (equal to all words in the file)
+Declare a new empty string alreadyAnswered
+Declare a new int Score
+Ask user to input a number & give them the theme
+Declare string answer = to user input
+If (allIntegers.contains(“answer”) && alreadyAnswered.!contians(“answer”)
+Set allIntegers = allIntegers.replace(
+Then add answer to alreadyAnswered and add 1 to score
+Ask if player wants to enter another int
+While (answer =yes)
+Return Score
+Create methods double/string along the same lines w/ changes according to the different types of var.
+While
+Use scanner to ask user if they would like to play again
+ */
+
+//import needed classes
 import java.util.*;
 import java.io.*;
 
-//make one array,
-
 public class WordGame {
-//    public static String allINT = " ";
-//    public static String allDOUBLE = " ";
-    public static String allWORD = " ";
+    //create global variables for the scores and the file's contents
+    public static String allFile = " ";
     public static int SCORE1;
     public static int SCORE2;
     public static int SCORE3;
 
 
     public static void main(String[] args) throws FileNotFoundException{
-        String replay ="";
-        System.out.println("* WELCOME! *");
+        //create a variable to help with the replay process later on
+        String replay;
 
+        //create a welcome screen
+        System.out.println("                ************************");
+        System.out.println("                * WELCOME TO OUR GAME! *");
+        System.out.println("                ************************\n");
+
+        //create a do while loop to run the game while the user continues to want to play
         do {
 
+            //create a scanner, prompt, and string to gather user input
             Scanner input = new Scanner(System.in);
             System.out.println("Would you like to play with 'Integers', 'Doubles', or 'Words'?");
             String Mode = input.next();
 
-//            initializeint();
-//            initializedou();
-            initializestr();
+            //this method reads/processes the file
+            initialize();
 
-
+            //if loops to jump to the method that deals with the mode the user chooses & get their score
             if ((Mode.contains(("Int")) || (Mode.contains("int")))){
                 SCORE1 = intmode();
                 System.out.println("Your Score is: " + SCORE1);
@@ -39,41 +79,53 @@ public class WordGame {
                 SCORE3 = stringmode();
                 System.out.println("Your Score is: " + SCORE3);
             }
+
+            //once the user is done playing a mode, ask if they want to try a different one
             Scanner again = new Scanner(System.in);
             System.out.println("\nDo you want to play again in a different mode? 'yes'/'no'");
             replay = again.nextLine();
         } while (replay.contains("y"));
-        System.out.println("Your Final Score is: "+(SCORE1+SCORE2+SCORE3));
+        //if not, end the game and print the overall score
+        System.out.println("\nYour Final Score is: "+(SCORE1+SCORE2+SCORE3)+"!");
 
     }
 
+    //create a method for int mode
     public static int intmode() {
+        //declare strings/int that'll be needed later
         String yesNo;
         int score = 0;
-        String alreadyAnswered = "";
+        String alreadyAnswered="";
 
        do {
+           //scanner, prompt, int, and string to gather the user's integer
             Scanner in = new Scanner(System.in);
             System.out.println("Guess an integer 0-300");
             int answer = in.nextInt();
             String Answer = Integer.toString(answer);
 
-            if (allWORD.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            //if the answer is correct & hasn't been used before, add to the score
+            if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
-                System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nPlay again? 'yes'/'no'");
+                //tell the user their updated score & ask if they want to guess again
+                System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
 
             } else {
-                System.out.println("You Guessed Incorrectly, play integers again? 'yes'/'no'");
+                //if incorrect, tell the user their score & ask if they want to guess again
+                System.out.println("You Guessed Incorrectly, your Score is still: "+score+ "\nGuess again? 'yes'/'no'");
             }
+            //scanner/string to take the user's yes/no answer
             Scanner yN = new Scanner(System.in);
             yesNo = yN.next();
 
-        } while(yesNo.contains("y"));
-
+            //end the loop once the user stops saying yes
+        } while((yesNo.contains("y"))||(yesNo.contains("Y")));
+       //return the score to main
        return score;
     }
 
+    //create a method for doubles, along the same lines as the int mode, just tailored towards a different var
     public static int doublemode() {
         String alreadyAnswered = "";
         int score = 0;
@@ -82,26 +134,27 @@ public class WordGame {
         do {
 
             Scanner in = new Scanner(System.in);
-            System.out.println("Guess a double rounded to the tenths place 0-15");
+            System.out.println("Guess a double rounded to the tenths place 0-18");
             double answer = in.nextDouble();
             String Answer = Double.toString(answer);
 
-            if (allWORD.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
-                System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nPlay again? 'yes'/'no'");
+                System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
                 Scanner yN = new Scanner(System.in);
                 yesNo = yN.next();
             } else {
-                System.out.println("You Guessed Incorrectly, play doubles again? 'yes'/'no'");
+                System.out.println("You Guessed Incorrectly, your Score is still: "+score+ "\nGuess again? 'yes'/'no'");
                 Scanner yN = new Scanner(System.in);
                 yesNo = yN.next();
             }
 
-        } while (yesNo.contains("y"));
+        } while((yesNo.contains("y"))||(yesNo.contains("Y")));
         return score;
     }
 
+    //create a method for words, along the same lines as the int mode, just tailored towards a different var
     public static int stringmode() {
         int score = 0;
         String yesNo = " ";
@@ -109,69 +162,34 @@ public class WordGame {
 
         do {
             Scanner in = new Scanner(System.in);
-            System.out.println("Guess a word that has to do with the beach! Capitalize the first letter.");
+            System.out.println("Guess a word that has to do with travel/vacation! Capitalize the first letter.");
             String Answer = in.nextLine();
 
-            if (allWORD.contains(Answer) && !alreadyAnswered.contains(Answer)) {
+            if (allFile.contains(Answer) && !alreadyAnswered.contains(Answer)) {
                 alreadyAnswered = alreadyAnswered + Answer;
                 score++;
-                System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nPlay again? 'yes'/'no'");
+                System.out.println("You Guessed Correctly! Your Score is now: " + score + "\nGuess again? 'yes'/'no'");
                 Scanner yN = new Scanner(System.in);
                 yesNo = yN.next();
             } else {
-                System.out.println("You Guessed Incorrectly, play words again? 'yes'/'no'");
+                System.out.println("You Guessed Incorrectly, your Score is still: "+score+ "\nGuess again? 'yes'/'no'");
                 Scanner yN = new Scanner(System.in);
                 yesNo = yN.next();
             }
-        } while (yesNo.contains("y"));
+        } while((yesNo.contains("y"))||(yesNo.contains("Y")));
         return score;
     }
 
-//    public static void initializeint() throws FileNotFoundException {
-//
-//        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
-//        Scanner read = new Scanner(file);
-//        int i=0;
-//        String trash = " ";
-//
-//        int [] allInt = new int[134];
-//            i=0;
-//        while (read.hasNextLine()) {
-//            if (read.hasNextInt()) {
-//                i++;
-//                allInt[i] = read.nextInt();
-//            } else {
-//                trash = read.next();
-//            }
-//            allINT = Arrays.toString(allInt);
-//        }
-//
-//    }
-//    public static void initializedou() throws FileNotFoundException {
-//        File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
-//        Scanner read = new Scanner(file);
-//        int i=0;
-//        String trash = " ";
-//
-//        double[] allDouble = new double[134];
-//        while (read.hasNextLine()) {
-//            if (read.hasNextDouble()) {
-//                i++;
-//                allDouble[i] = read.nextDouble();
-//            } else {
-//                trash = read.next();
-//            }
-//            allDOUBLE = Arrays.toString(allDouble);
-//        }
-//    }
-
-    public static void initializestr() throws FileNotFoundException {
+    //this method reads through the file, and processes the tokens in it
+    public static void initialize() throws FileNotFoundException {
+        //bring in the file/ read it with a scanner
         File file = new File("/Users/emma/IdeaProjects/summer2020/src/com/company/file.txt");
         Scanner read = new Scanner(file);
         int i=0;
         String trash = " ";
 
-        String [] allWord = new String[134];
+        //add everything into an array & then convert into a string
+        String [] allWord = new String[401];
         i=0;
         while (read.hasNextLine()) {
             if (read.hasNext()) {
@@ -180,9 +198,8 @@ public class WordGame {
             } else {
                 trash = read.next();
             }
-            allWORD = Arrays.toString(allWord);
+            allFile = Arrays.toString(allWord);
         }
-
     }
 }
 
